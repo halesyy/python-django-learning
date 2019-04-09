@@ -1,0 +1,15 @@
+{% if question %}
+
+    You're looking at Poll ID {{ question_id }} <br/>
+
+    <h1>{{ question.question_text }}</h1>
+    <form action="post">
+      {% for choice in choices %}
+        <input type="radio" name="{{choice.id}}"> {{choice.choice_text}} <br />
+      {% endfor %}
+      <input type="submit" name="submit" value="Vote" />
+    </form>
+
+{% else %}
+    <p>Seems that ID does not exist in our database, go <a href="/polls">back</a> to look for a recent one.</p>
+{% endif %}
