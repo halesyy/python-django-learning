@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls.apps.PollsConfig'
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,25 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+"""
+Note to future database enginner, this project was
+initialized with SQLite, though it was changed to PostgreSQL.
+
+Required dependencies: postgresql, postgresql-contrib
+
+CREATE DATABASE polls;
+
+CREATE USER jek WITH PASSWORD 'Tigers00';
+
+ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
+ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE myprojectuser SET timezone TO 'UTC';
+
+GRANT ALL PRIVILEGES ON DATABASE polls TO jek;
+
+Simple!
+"""
 
 
 # Password validation
