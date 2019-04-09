@@ -1,14 +1,22 @@
 {% if question %}
 
-    You're looking at Poll ID {{ question_id }} <br/>
+      You're looking at Poll ID {{ question_id }} <br/>
 
-    <h1>{{ question.question_text }}</h1>
-    <form action="post">
-      {% for choice in choices %}
-        <input type="radio" id="tb-{{choice.id}}" name="poll-id-choice"> <label for="tb-{{choice.id}}">{{choice.choice_text}}</label> <br />
-      {% endfor %}
-      <input type="submit" name="submit" value="Vote" />
-    </form>
+      <h1>{{ question.question_text }}</h1>
+
+      {% if error_message %}
+          <p><strong style="color: red;">{{ error_message }}</strong></p>
+      {% endif %}
+
+      <form action="{% url 'polls:vote' question_id %}" method="post">
+          {% csrf_token %}
+
+          {% for choice in choices %}
+            <input type="radio" id="c{{choice.id}}" name="choice" value={{choice.id}}> <label for="c{{choice.id}}">{{choice.choice_text}}</label> <br />
+          {% endfor %}
+
+          <input type="submit" value="Vote" />
+      </form>
 
 {% else %}
     <p>Seems that ID does not exist in our database, go <a href="/polls">back</a> to look for a recent one.</p>

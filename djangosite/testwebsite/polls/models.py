@@ -38,3 +38,4 @@ class Choice(models.Model):
         return self.choice_text
 
 admin.site.register(Question)
+admin.site.register(Choice)
