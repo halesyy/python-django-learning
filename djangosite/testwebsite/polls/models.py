@@ -4,8 +4,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib import admin
 
-from django.shortcuts import get_object_or_404
-
 
 """
 1. Cange your models (in models.py).
